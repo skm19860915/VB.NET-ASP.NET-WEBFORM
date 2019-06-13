@@ -1,0 +1,168 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="rmxaffiliatewebapp.SiteMaster" %>
+
+<%@ Import Namespace="rmxaffiliatewebapp" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - In Land Empire</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form runat="server" id="AffiliateForm">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+            </Scripts>
+        </asp:ScriptManager>
+        <div>
+            <% Response.WriteFile(_headerPath)%>
+        </div>
+        <div class="navbar navbar-inverse" id="menu">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                            <li><a href="Default.aspx">Home</a></li>
+                        <%Else %>
+                            <li><a href="Default.aspx?<%= _kingOfHammerParam %>">Home</a></li>
+                        <%End If %>
+                        <% For Each item As BaseClassViewModel In _classes %>
+                        <% Select Case item.BaseClass %>
+                        <% Case 1 %>
+                            <li>
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class A.aspx">Class A</a>
+                                <%Else %>
+                                    <a href="Class A.aspx?LS=KOH">Class A</a>
+                                <%End If %>
+                            </li>
+                        <% Case 2 %>
+                            <li>
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class B.aspx">Class B</a>
+                                <%Else %>
+                                    <a href="Class B.aspx?<%= _kingOfHammerParam %>">Class B</a>
+                                <%End If %>
+                            </li>
+                        <% Case 3 %>
+                            <li>    
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class C.aspx">Class C</a>
+                                <%Else %>
+                                    <a href="Class C.aspx?<%= _kingOfHammerParam %>">Class C</a>
+                                <%End If %>
+                            </li>
+                        <% Case 4%>
+                            <li>    
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class CT.aspx">Class CT</a>
+                                <%Else %>
+                                    <a href="Class CT.aspx?<%= _kingOfHammerParam %>">Class CT</a>
+                                <%End If %>
+                            </li>
+                        <% Case 5 %>
+                            <li>    
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class FW.aspx">Class FW</a>
+                                <%Else %>
+                                    <a href="Class FW.aspx?<%= _kingOfHammerParam %>">Class FW</a>
+                                <%End If %>
+                            </li>
+                        <% Case 6 %>
+                            <li>    
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class PU.aspx">Class PU</a>
+                                <%Else %>
+                                    <a href="Class PU.aspx?<%= _kingOfHammerParam %>">Class PU</a>
+                                <%End If %>
+                            </li>
+                        <% Case 7 %>
+                            <li>    
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class TH.aspx">Class TH</a>
+                                <%Else %>
+                                    <a href="Class TH.aspx?<%= _kingOfHammerParam %>">Class TH</a>
+                                <%End If %>
+                            </li>
+                        <% Case 8 %>
+                            <li>    
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class TT.aspx">Class TT</a>
+                                <%Else %>
+                                    <a href="Class TT.aspx?<%= _kingOfHammerParam %>">Class TT</a>
+                                <%End If %>
+                            </li>
+                        <% Case 9 %>
+                            <li>    
+                                <%If String.IsNullOrEmpty(_kingOfHammerParam) Then %>
+                                    <a href="Class UT.aspx">Class UT</a>
+                                <%Else %>
+                                    <a href="Class UT.aspx?<%= _kingOfHammerParam %>">Class UT</a>
+                                <%End If %>
+                            </li>
+                        <% End Select %>
+                        <% Next %>
+                    </ul>
+                    <div class="dropdown" style="float:right;">
+                        <button type="button" class="dropdown-toggle" data-toggle="dropdown" style="margin-top:10px; margin-left:30px; background:#81959d;">
+                            <img src="UserData/Content/rvrentalsusainc.com/images/hamburger.ico" style="width:35px;" />
+                        </button>
+                        <ul class="dropdown-menu" style="margin-left:30px;">
+                            <li><a href="Default.aspx">Home</a></li>
+                            <li><a href="ContactUs.aspx">Contact Us</a></li>
+                            <li><a href="About.aspx">About Us</a></li>
+                            <%--Dynamic Hamburger menu items--%>
+                            <%If _hamburgerMenuItems IsNot Nothing Then %>
+                                <li role="separator" class="divider"></li>
+                                <%For Each item As HamburgerMenuItemViewModel In _hamburgerMenuItems %>
+                                    <li><a href="<%= item.PageName %>"><%= item.TitleName %></a></li>
+                                <%Next %>
+                            <%End If %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <br />
+        <footer style="background-color:#022a3b;">
+            <div style="padding-left:80px;">
+                <p style="padding-top:20px; color:white;"><a href="Default.aspx" id="footer-link"><%= _footerPath %></a><img style="padding-bottom:3px;" src="UserData/Images/footer.png" /></p>
+            </div>
+            <hr />
+        </footer>
+    </form>
+</body>
+</html>
